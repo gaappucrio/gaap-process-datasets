@@ -56,3 +56,51 @@ Um menu vai aparecer na sua tela! Basta digitar o número correspondente ao data
 
 **Onde os dados vão parar?**
 Todos os arquivos extraídos aparecerão dentro de uma pasta chamada `data/`, que será criada automaticamente na mesma pasta do projeto.
+
+## 📦 Para adicionar novos datasets:
+=========================================================
+COMO ADICIONAR NOVOS DATASETS AO REPOSITÓRIO
+=========================================================
+
+A arquitetura do script `download_datasets.py` foi construída de forma dinâmica. Você não precisa alterar nenhuma lógica de código, barras de progresso ou menus para adicionar novos dados. 
+
+Tudo o que você precisa fazer é adicionar um novo bloco dentro do dicionário `DATASETS` (localizado no início do script).
+
+---
+1. O FORMATO OBRIGATÓRIO
+---
+Abra o arquivo `download_datasets.py`. Vá até o final do dicionário DATASETS, adicione uma vírgula após o último item e insira o próximo número seguindo este exato modelo:
+
+    "NUMERO_DO_MENU": {
+        "id_nome": "Nome_Sem_Espacos_Para_Criar_A_Pasta",
+        "desc": "Uma frase curta explicando o foco do dataset para o menu",
+        "url": "LINK_DIRETO_PARA_O_ARQUIVO_ZIP"
+    }
+
+---
+2. EXEMPLO PRÁTICO
+---
+Se você já tem 4 datasets cadastrados e quer adicionar um 5º, o final do seu dicionário ficará assim:
+
+DATASETS = {
+    # ... (datasets 1, 2 e 3 ocultos aqui) ...
+    "4": {
+        "id_nome": "CWRU_Bearing",
+        "desc": "Padrão ouro para análise de vibração em rolamentos",
+        "url": "https://codeload.github.com/srigas/CWRU_Bearing_NumPy/zip/refs/heads/main"
+    },
+    "5": {
+        "id_nome": "Novo_Dataset_Incrivel",
+        "desc": "Dados focados em falhas térmicas de reatores",
+        "url": "https://link-direto-do-novo-dataset.zip"
+    }
+}
+
+---
+3. O QUE ACONTECE DEPOIS?
+---
+A mágica acontece sozinha! Salve o arquivo de texto. Na próxima vez que o script `python download_datasets.py` for executado:
+- O menu no terminal já exibirá a opção [5] automaticamente.
+- A opção [0] (Baixar TODOS) incluirá esse novo dataset na fila de downloads.
+
+*Lembrete de Boas Práticas:* Sempre que adicionar um novo dataset no script, não se esqueça de atualizar também a seção "Datasets Disponíveis" no arquivo principal `README.md` para manter a documentação do GitHub sincronizada!
