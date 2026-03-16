@@ -29,12 +29,20 @@ DATASETS = {
 DATA_DIR = "data"
 
 def download_and_extract(dataset_info):
-    """Baixa um arquivo .zip e o descompacta na pasta data."""
+    """Baixa um arquivo .zip e o descompacta na pasta data, se já não existir."""
     name = dataset_info["id_nome"]
     url = dataset_info["url"]
     
     dataset_path = os.path.join(DATA_DIR, name)
     zip_path = os.path.join(DATA_DIR, f"{name}.zip")
+
+    # --- NOVA VERIFICAÇÃO AQUI ---
+    # Verifica se a pasta existe E se não está vazia
+    if os.path.exists(dataset_path) and os.listdir(dataset_path):
+        print(f"\n[!] O dataset '{name}' já foi baixado e extraído em: {dataset_path}")
+        print("Pulei o download para economizar tempo e banda.")
+        return # Sai da função imediatamente
+    # -----------------------------
 
     os.makedirs(dataset_path, exist_ok=True)
     print(f"\n[{name}] Iniciando o download...")
@@ -44,7 +52,6 @@ def download_and_extract(dataset_info):
         response = requests.get(url, stream=True)
         response.raise_for_status() 
         
-        # Tenta pegar o tamanho total, se não estiver disponível, define como 0
         total_size = int(response.headers.get('content-length', 0))
         
         with open(zip_path, 'wb') as file, tqdm(
@@ -65,7 +72,6 @@ def download_and_extract(dataset_info):
     except Exception as e:
         print(f"❌ ERRO: Falha ao processar {name}. Detalhes: {e}")
     finally:
-        # Apaga o arquivo .zip para economizar espaço
         if os.path.exists(zip_path):
             os.remove(zip_path)
 
