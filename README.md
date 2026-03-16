@@ -58,9 +58,6 @@ Um menu vai aparecer na sua tela! Basta digitar o número correspondente ao data
 Todos os arquivos extraídos aparecerão dentro de uma pasta chamada `data/`, que será criada automaticamente na mesma pasta do projeto.
 
 ## 📦 Para adicionar novos datasets:
-=========================================================
-COMO ADICIONAR NOVOS DATASETS AO REPOSITÓRIO
-=========================================================
 
 A arquitetura do script `download_datasets.py` foi construída de forma dinâmica. Você não precisa alterar nenhuma lógica de código, barras de progresso ou menus para adicionar novos dados. 
 
