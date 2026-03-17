@@ -9,9 +9,13 @@ Este é um repositório aberto e centralizado de datasets públicos focados em *
 Atualmente, nossa ferramenta permite o download automático dos seguintes benchmarks:
 
 1. **3W Dataset (Petrobras):** Dados reais e simulados de eventos indesejáveis em poços de petróleo offshore.
+Para mais detalhes: https://www.kaggle.com/datasets/afrniomelo/3w-dataset
 2. **Tennessee Eastman Process (TEP):** O benchmark clássico de simulação de processos químicos para testar algoritmos de controle e monitoramento.
+Para mais detalhes: https://www.kaggle.com/datasets/averkij/tennessee-eastman-process-simulation-dataset
 3. **WAID Dataset (Petrobras):** Base de dados focada em incidentes e integridade de poços.
+Para mais detalhes: https://github.com/petrobras/waid
 4. **CWRU Bearing Dataset:** O padrão ouro para manutenção preditiva e análise de vibração em rolamentos de equipamentos rotativos.
+Para mais detalhes: https://www.kaggle.com/datasets/brjapon/cwru-bearing-datasets
 
 ---
 
